@@ -3,27 +3,90 @@
   <head>
     <%- include("../partials/header") %>
   </head>
-  <body class="bg-gray-100 text-gray-800">
-    <div class="container mx-auto p-5">
-      <h1 class="text-3xl font-bold text-center mb-5 capitalize">
-        <%= pokemon.name %>
-      </h1>
-      <div class="flex flex-col items-center">
+  <body class="bg-white-900 flex justify-center items-center min-h-screen">
+    <!-- Game Boy Console Body -->
+    <div
+      class="bg-red-600 w-[380px] h-[650px] rounded-3xl shadow-2xl border-8 border-black relative flex flex-col items-center"
+    >
+      <!-- Screen -->
+      <div
+        class="bg-black w-[300px] h-[360px] rounded-lg mt-6 border-8 border-gray-800 flex flex-col items-center justify-center text-white relative"
+      >
+        <h1 class="text-3xl font-bold text-center mb-3 uppercase tracking-wide">
+          <%= pokemon.name %>
+        </h1>
         <img
           src="<%= pokemon.sprites.front_default %>"
           alt="<%= pokemon.name %>"
-          class="w-40 h-40"
+          class="w-32 h-32"
         />
         <p class="text-lg font-semibold">Height: <%= pokemon.height %></p>
         <p class="text-lg font-semibold">Weight: <%= pokemon.weight %></p>
         <p class="text-lg font-semibold">
           Type: <%= pokemon.types.map(t => t.type.name).join(', ') %>
         </p>
+
+        <!-- Game Boy Color Label -->
+        <div
+          class="absolute bottom-[-26px] bg-black px-3 py-1 rounded-md text-xs font-bold text-white"
+        >
+          GAME BOY <span class="text-blue-400">C</span
+          ><span class="text-green-400">O</span
+          ><span class="text-yellow-400">L</span
+          ><span class="text-red-400">O</span
+          ><span class="text-purple-400">R</span>
+        </div>
       </div>
-      <div class="text-center mt-5">
-        <a href="/" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Back</a>
+
+      <!-- D-Pad (Left Side) -->
+      <div
+        class="absolute left-6 bottom-32 grid grid-cols-3 grid-rows-3 gap-1 w-16 h-16"
+      >
+        <div></div>
+        <div class="w-6 h-6 bg-gray-800 rounded"></div>
+        <div></div>
+        <div class="w-6 h-6 bg-gray-800 rounded"></div>
+        <div class="w-6 h-6"></div>
+        <div class="w-6 h-6 bg-gray-800 rounded"></div>
+        <div></div>
+        <div class="w-6 h-6 bg-gray-800 rounded"></div>
+        <div></div>
+      </div>
+
+      <!-- A & B Buttons (Right Side) -->
+      <div class="absolute right-8 bottom-36 flex flex-col space-y-4">
+        <div class="w-10 h-10 bg-gray-800 rounded-full"></div>
+        <div class="w-10 h-10 bg-gray-800 rounded-full"></div>
+      </div>
+
+      <!-- Start & Select Buttons -->
+      <div class="absolute bottom-24 flex space-x-4">
+        <div class="w-12 h-4 bg-gray-700 rounded-lg"></div>
+        <div class="w-12 h-4 bg-gray-700 rounded-lg"></div>
+      </div>
+
+      <!-- Speaker Dots -->
+      <div class="absolute bottom-8 left-8 grid grid-cols-3 gap-1">
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+        <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+      </div>
+
+      <!-- Back Button (inside screen) -->
+      <div class="absolute bottom-4">
+        <a
+          href="/"
+          class="px-5 py-2 bg-gray-300 text-black font-bold rounded-lg shadow-md hover:bg-gray-400 transition"
+        >
+          Back
+        </a>
       </div>
     </div>
-    <%- include("../partials/footer") %>
   </body>
 </html>
